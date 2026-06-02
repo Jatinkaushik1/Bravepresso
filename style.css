@@ -3013,9 +3013,31 @@ body.light-mode .dropdown-menu {
 }
 body.light-mode .dropdown-item { color: var(--cream); }
 body.light-mode .dropdown-item:hover { background: rgba(139,105,20,0.1); color: var(--gold); }
-body.light-mode footer {
-    background: #2C1A0E;
-    color: #D7CCC8;
+body.light-mode #footer {
+    background: var(--roast);
+    color: var(--white);
+    border-top: 1px solid rgba(139, 105, 20, 0.15);
+}
+
+body.light-mode #footer .footer-brand p,
+body.light-mode #footer .footer-links-col a,
+body.light-mode #footer .footer-newsletter p,
+body.light-mode #footer .footer-bottom p {
+    color: var(--cream);
+}
+
+body.light-mode #footer .footer-socials a {
+    border-color: rgba(139, 105, 20, 0.2);
+    color: var(--gold);
+}
+
+body.light-mode #footer .footer-socials a:hover {
+    background: var(--gold);
+    color: #FAF6F1;
+}
+
+body.light-mode #footer .footer-grid {
+    border-bottom: 1px solid rgba(139, 105, 20, 0.15);
 }
 body.light-mode .btn-outline {
     border-color: var(--gold);
