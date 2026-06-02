@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update Image
                 if (productImage) {
-                    productImage.src = isTrial ? './trial-front.jpg' : './product.png';
+                    productImage.src = isTrial ? './product-back.png' : './product.png';
                 }
 
                 syncCalculatorState();
