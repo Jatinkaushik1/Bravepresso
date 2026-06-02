@@ -447,6 +447,7 @@ header.scrolled .logo img {
     line-height: 1;
     background: linear-gradient(to right, var(--gold), #f3e5ab);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
 }
@@ -2983,6 +2984,7 @@ body.light-mode .announcement-bar {
 body.light-mode .logo-text {
     background: linear-gradient(to right, #8B6914, #6B4F10);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 body.light-mode .nav-links a { color: var(--cream); }
