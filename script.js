@@ -869,6 +869,32 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
     syncCalculatorState();
 
+    // ==================== THEME TOGGLE LOGIC ====================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isLight = document.body.classList.toggle('light-mode');
+            localStorage.setItem('bravepresso_theme', isLight ? 'light' : 'dark');
+            updateThemeIcon(isLight);
+        });
+    }
+
+    function updateThemeIcon(isLight) {
+        const icon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+        if (icon) {
+            icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+
+    // Initialize Theme
+    const savedTheme = localStorage.getItem('bravepresso_theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        updateThemeIcon(true);
+    } else {
+        updateThemeIcon(false);
+    }
+
     // ==================== CONTACT FORM ====================
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {

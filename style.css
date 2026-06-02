@@ -3109,9 +3109,15 @@ body.light-mode .wishlist-btn-abs { background: rgba(255,255,255,0.6); }
 body.light-mode .recipe-time { background: rgba(255,255,255,0.8); color: #2C1A0E; }
 
 /* ==================== THEME TOGGLE BUTTON ==================== */
-.theme-toggle-btn { transition: transform 0.3s ease, background 0.3s ease !important; }
-.theme-toggle-btn:hover { transform: rotate(20deg) translateY(-3px) !important; }
-body.light-mode .theme-toggle-btn { background: rgba(139,105,20,0.1) !important; }
+.theme-toggle-btn {
+    transition: transform 0.3s ease, background 0.3s ease !important;
+}
+.theme-toggle-btn:hover {
+    transform: rotate(20deg) translateY(-3px) !important;
+}
+body.light-mode .theme-toggle-btn {
+    background: rgba(139, 105, 20, 0.1) !important;
+}
 
 /* ==================== REVIEWS CAROUSEL ==================== */
 .reviews-carousel-wrapper {
