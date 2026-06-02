@@ -3043,6 +3043,42 @@ body.light-mode .quiz-option {
     color: var(--cream);
 }
 body.light-mode .quiz-option:hover { border-color: var(--gold); background: rgba(139,105,20,0.08); }
+body.light-mode .toast {
+    background: #FAF6F1;
+    color: #2C1A0E;
+    border-color: rgba(139,105,20,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+body.light-mode .brand-identity { background: var(--roast); }
+body.light-mode .gallery-main { background: var(--roast); }
+body.light-mode .thumb { background: var(--roast); border-color: rgba(139,105,20,0.2); }
+body.light-mode .thumb.active { border-color: var(--gold); }
+body.light-mode .nav-links {
+    background: rgba(250, 246, 241, 0.98);
+    border-left-color: rgba(139,105,20,0.3);
+}
+body.light-mode .search-bar-wrapper { background: rgba(250, 246, 241, 0.98); }
+body.light-mode .track-input {
+    background: rgba(255,255,255,0.8) !important;
+    color: #2C1A0E !important;
+}
+body.light-mode .track-input::placeholder { color: rgba(92,64,55,0.5); }
+body.light-mode .pincode-checker { background: rgba(255,255,255,0.5); }
+body.light-mode .pincode-input-group input {
+    background: rgba(255,255,255,0.8) !important;
+    color: #2C1A0E !important;
+}
+body.light-mode .pincode-input-group input::placeholder { color: rgba(92,64,55,0.5); }
+body.light-mode .pincode-input-group button:hover { background: var(--roast) !important; }
+body.light-mode .modal-input { color: #2C1A0E !important; }
+body.light-mode .back-to-top:hover { background: #F0E6D8; }
+body.light-mode .btn-primary:hover { background: #F0E6D8; }
+body.light-mode .newsletter-form button:hover { background: #F0E6D8; }
+body.light-mode .copy-coupon-btn:hover { background: #F0E6D8; }
+body.light-mode .btn-track:hover { background: #F0E6D8 !important; }
+body.light-mode .modal, body.light-mode .payment-modal, body.light-mode .user-modal {
+    background: rgba(0,0,0,0.6);
+}
 
 /* ==================== THEME TOGGLE BUTTON ==================== */
 .theme-toggle-btn { transition: transform 0.3s ease, background 0.3s ease !important; }
