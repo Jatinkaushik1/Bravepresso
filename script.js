@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cartItems) {
                 cartItems.style.display = 'block';
                 cartItems.innerHTML = cart.map((item, i) => {
-                    const itemImg = item.name.includes('24g') ? './trial-front.jpg' : './product.png';
+                    const itemImg = item.name.includes('24g') ? './instant-coffee.png' : './product.png';
                     return `
                         <div class="cart-item">
                             <div class="cart-item-img"><img src="${itemImg}" alt="${item.name}"></div>
