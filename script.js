@@ -170,7 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const variantRadios = document.querySelectorAll('input[name="pack_size"]');
     const displayPrice = document.getElementById('displayPrice');
     const displayUnit = document.getElementById('displayUnit');
-    const productImage = document.getElementById('productImage');
+    const viewFrontImg = document.querySelector('#view-front img');
+    const viewBackImg = document.querySelector('#view-back img');
+    const thumbFrontImg = document.querySelector('.thumb[data-target="view-front"] img');
+    const thumbBackImg = document.querySelector('.thumb[data-target="view-back"] img');
 
     if (variantRadios.length > 0) {
         variantRadios.forEach(radio => {
@@ -197,9 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (displayPrice) displayPrice.innerText = currentPrice;
                 if (displayUnit) displayUnit.innerText = isTrial ? '/ 24g jar' : '/ 100g pack';
 
-                // Update Image
-                if (productImage) {
-                    productImage.src = isTrial ? './product-back.png' : './product.png';
+                // Update Images
+                if (viewFrontImg && thumbFrontImg) {
+                    viewFrontImg.src = isTrial ? './trial-front.jpg' : './product.png';
+                    thumbFrontImg.src = isTrial ? './trial-front.jpg' : './product.png';
+                }
+                if (viewBackImg && thumbBackImg) {
+                    viewBackImg.src = isTrial ? './trial-back.jpg' : './product-back.png';
+                    thumbBackImg.src = isTrial ? './trial-back.jpg' : './product-back.png';
                 }
 
                 syncCalculatorState();
@@ -259,8 +267,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================== PRODUCT GALLERY ====================
-    // Gallery removed, using single product image instead
-    
+    const thumbs = document.querySelectorAll('.thumb');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryMain = document.getElementById('galleryMain');
+
+    function updateGallery(index) {
+        thumbs.forEach(t => t.classList.remove('active'));
+        galleryItems.forEach(g => g.classList.remove('active'));
+        
+        thumbs[index].classList.add('active');
+        galleryItems[index].classList.add('active');
+    }
+
+    if (thumbs.length > 0) {
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                updateGallery(index);
+            });
+        });
+    }
+
+    // Swipe Support for Gallery
+    if (galleryMain) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let currentIndex = 0;
+
+        // Prevent default image drag
+        galleryMain.querySelectorAll('img').forEach(img => {
+            img.setAttribute('draggable', 'false');
+        });
+
+        galleryMain.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        galleryMain.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        }, { passive: true });
+
+        // Mouse Drag Support for Desktop
+        galleryMain.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // Prevent text selection and default drag
+            touchStartX = e.clientX;
+        });
+
+        galleryMain.addEventListener('mouseup', (e) => {
+            touchEndX = e.clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 30; // Lower threshold for easier swiping
+            const diff = touchStartX - touchEndX;
+
+            // Find current active index
+            currentIndex = Array.from(galleryItems).findIndex(item => item.classList.contains('active'));
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe Left -> Next Image
+                    let nextIndex = (currentIndex + 1) % galleryItems.length;
+                    updateGallery(nextIndex);
+                } else {
+                    // Swipe Right -> Previous Image
+                    let prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    updateGallery(prevIndex);
+                }
+            }
+        }
+    }
+
     // ==================== PROFILE SECTION ====================
     const menuProfile = document.getElementById('menuProfile');
     const mobileProfile = document.getElementById('mobileProfile');

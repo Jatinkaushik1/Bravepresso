@@ -135,6 +135,7 @@
 
     <!-- ==================== HERO ==================== -->
     <section class="hero" id="home">
+        <div class="hero-overlay"></div>
         <div class="floating-beans" id="floatingBeans"></div>
         <div class="container">
             <div class="hero-content">
@@ -176,8 +177,33 @@
                 <p>Carefully roasted to bring out bold flavors of dark chocolate, hazelnut, and berries.</p>
             </div>
             <div class="product-grid">
-                <div class="product-image-container">
-                    <img id="productImage" src="./product.png" alt="BRAVE PRESSO Coffee Pack" class="product-main-img">
+                <div class="product-image-container reveal">
+                    <div class="freshness-badge">Roasted on Order</div>
+                    <button class="wishlist-btn-abs" id="addToWishlistBtn" title="Add to Wishlist">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <div class="gallery-main" id="galleryMain">
+                        <div class="gallery-item active" id="view-front">
+                            <img src="./product.png" alt="BRAVE PRESSO Coffee Packet Front View" loading="lazy" draggable="false" loading="lazy">
+                        </div>
+                        <div class="gallery-item" id="view-back">
+                            <img src="./product-back.png" alt="BRAVE PRESSO Coffee Packet Back Side with Nutritional Info and 2 Year Shelf Life" loading="lazy" draggable="false" loading="lazy">
+                        </div>
+                        <div class="gallery-item" id="view-beans">
+                            <img src="./hero.png" alt="Premium Dark Roasted Coffee Beans Close-up" loading="lazy" draggable="false" >
+                        </div>
+                    </div>
+                    <div class="gallery-thumbnails">
+                        <div class="thumb active" data-target="view-front">
+                            <img src="./product.png" alt="Front" loading="lazy">
+                        </div>
+                        <div class="thumb" data-target="view-back">
+                            <img src="./product-back.png" alt="Back" loading="lazy">
+                        </div>
+                        <div class="thumb" data-target="view-beans">
+                            <img src="./hero.png" alt="Beans" >
+                        </div>
+                    </div>
                 </div>
                 <div class="product-details reveal">
                     <div class="product-badge">Best Seller</div>
