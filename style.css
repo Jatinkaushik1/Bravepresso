@@ -8,6 +8,7 @@
     --cream: #D7CCC8;
     --latte: #A1887F;
     --white: #F5F5F5;
+    --darker: #0F0805;
     --glass: rgba(255, 255, 255, 0.04);
     --glass-border: rgba(255, 255, 255, 0.08);
     --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -2961,6 +2962,7 @@ body.light-mode {
     --cream: #5D4037;
     --latte: #795548;
     --white: #2C1A0E;
+    --darker: #FAF6F1;
     --glass: rgba(0, 0, 0, 0.04);
     --glass-border: rgba(0, 0, 0, 0.1);
     --shadow: 0 20px 40px rgba(0,0,0,0.15);
