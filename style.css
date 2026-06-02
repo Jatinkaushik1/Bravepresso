@@ -3079,6 +3079,12 @@ body.light-mode .btn-track:hover { background: #F0E6D8 !important; }
 body.light-mode .modal, body.light-mode .payment-modal, body.light-mode .user-modal {
     background: rgba(0,0,0,0.6);
 }
+body.light-mode .newsletter-popup-overlay { background: rgba(0,0,0,0.6); }
+body.light-mode .page-header {
+    background: linear-gradient(135deg, rgba(250,246,241,0.95), rgba(240,230,216,0.95));
+}
+body.light-mode .wishlist-btn-abs { background: rgba(255,255,255,0.6); }
+body.light-mode .recipe-time { background: rgba(255,255,255,0.8); color: #2C1A0E; }
 
 /* ==================== THEME TOGGLE BUTTON ==================== */
 .theme-toggle-btn { transition: transform 0.3s ease, background 0.3s ease !important; }
