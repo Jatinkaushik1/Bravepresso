@@ -2586,4 +2586,80 @@ document.addEventListener('DOMContentLoaded', () => {
             beansContainer.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
         }, { passive: true });
     }
+
+    /* ==================== BREW SIMULATOR ==================== */
+    const startBrewSimBtn = document.getElementById('startBrewSimBtn');
+    const resetBrewSimBtn = document.getElementById('resetBrewSimBtn');
+    const brewStageLabel = document.getElementById('brewStageLabel');
+    const cupLiquid = document.getElementById('cupLiquid');
+    const cupFoam = document.getElementById('cupFoam');
+    const liquidStream = document.getElementById('liquidStream');
+    const steamContainer = document.getElementById('steamContainer');
+
+    if (startBrewSimBtn && resetBrewSimBtn) {
+        startBrewSimBtn.addEventListener('click', function () {
+            startBrewSimBtn.disabled = true;
+            resetBrewSimBtn.disabled = true;
+            
+            // Step 1: Pour Coffee
+            brewStageLabel.textContent = 'Pouring rich dark espresso... ☕';
+            if (document.body.classList.contains('light-mode')) {
+                brewStageLabel.style.color = '#5D4037';
+            } else {
+                brewStageLabel.style.color = '#FAF6F1';
+            }
+            liquidStream.style.backgroundColor = '#3e2723';
+            liquidStream.style.height = '140px';
+            liquidStream.style.opacity = '1';
+            
+            setTimeout(() => {
+                cupLiquid.style.height = '50%';
+            }, 300);
+
+            // Step 2: Pour Milk
+            setTimeout(() => {
+                brewStageLabel.textContent = 'Pouring steamed milk... 🥛';
+                if (document.body.classList.contains('light-mode')) {
+                    brewStageLabel.style.color = '#8B6914';
+                } else {
+                    brewStageLabel.style.color = '#C6A664';
+                }
+                liquidStream.style.backgroundColor = '#FAF6F1';
+                cupLiquid.style.height = '85%';
+                cupLiquid.style.backgroundColor = '#8d6e63'; // mixed latte color
+            }, 2500);
+
+            // Step 3: Finish Brewing
+            setTimeout(() => {
+                liquidStream.style.opacity = '0';
+                liquidStream.style.height = '0';
+                cupFoam.style.height = '12px';
+                cupFoam.style.opacity = '1';
+                steamContainer.style.opacity = '1';
+                brewStageLabel.textContent = 'Perfect Latte Brewed! ✨';
+                if (document.body.classList.contains('light-mode')) {
+                    brewStageLabel.style.color = '#8B6914';
+                } else {
+                    brewStageLabel.style.color = '#C6A664';
+                }
+                resetBrewSimBtn.disabled = false;
+            }, 4500);
+        });
+
+        resetBrewSimBtn.addEventListener('click', function () {
+            resetBrewSimBtn.disabled = true;
+            startBrewSimBtn.disabled = false;
+            
+            brewStageLabel.textContent = 'Ready to Brew';
+            brewStageLabel.style.color = 'var(--gold)';
+            cupLiquid.style.height = '0%';
+            cupLiquid.style.backgroundColor = '#3e2723';
+            cupFoam.style.height = '0px';
+            cupFoam.style.opacity = '0';
+            steamContainer.style.opacity = '0';
+            liquidStream.style.height = '0';
+            liquidStream.style.opacity = '0';
+        });
+    }
 });
+

@@ -3368,3 +3368,209 @@ body.light-mode .theme-toggle-btn {
 @media (min-width: 769px) and (max-width: 1024px) {
     .guides-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ==================== LIGHT MODE MODAL FIXES ==================== */
+body.light-mode .payment-modal-content,
+body.light-mode .modal-content,
+body.light-mode .user-modal-content {
+    background: #FAF6F1 !important;
+    border-color: rgba(139, 105, 20, 0.3) !important;
+    color: #2C1A0E !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+}
+body.light-mode .modal-header h2,
+body.light-mode .modal-header p,
+body.light-mode .checkout-address-form h4,
+body.light-mode .order-summary-box h4 {
+    color: #2C1A0E !important;
+}
+body.light-mode .order-summary-box {
+    background: rgba(139, 105, 20, 0.05) !important;
+    border-color: rgba(139, 105, 20, 0.2) !important;
+}
+body.light-mode #checkoutItemsList,
+body.light-mode #paymentTotalAmt,
+body.light-mode .checkout-address-form label {
+    color: #2C1A0E !important;
+}
+body.light-mode .checkout-input {
+    background: #FFFFFF !important;
+    border-color: rgba(139, 105, 20, 0.3) !important;
+    color: #2C1A0E !important;
+}
+body.light-mode .checkout-input::placeholder {
+    color: rgba(93, 64, 55, 0.5) !important;
+}
+body.light-mode .pay-btn {
+    background: #FFFFFF !important;
+    border-color: rgba(139, 105, 20, 0.3) !important;
+    color: #2C1A0E !important;
+}
+body.light-mode .pay-btn:hover {
+    background: rgba(139, 105, 20, 0.1) !important;
+    color: #8B6914 !important;
+    border-color: #8B6914 !important;
+}
+body.light-mode .payment-close,
+body.light-mode .modal-close {
+    background: rgba(139, 105, 20, 0.2) !important;
+    color: #8B6914 !important;
+    border-color: #8B6914 !important;
+}
+body.light-mode .toast {
+    background: #FAF6F1 !important;
+    color: #2C1A0E !important;
+    border: 1px solid rgba(139, 105, 20, 0.2) !important;
+}
+
+/* ==================== BREW SIMULATOR ==================== */
+.brew-simulator-section {
+    padding: 6rem 0;
+    background: radial-gradient(circle at 50% 50%, rgba(198, 166, 100, 0.03) 0%, transparent 70%);
+}
+.simulator-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.simulator-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+body.light-mode .simulator-card {
+    background: rgba(255,255,255,0.7);
+    border-color: rgba(139,105,20,0.15);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.brew-stage-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    font-weight: 700;
+    height: 2rem;
+    transition: color 0.3s ease;
+}
+.cup-container {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.coffee-cup {
+    position: relative;
+    width: 140px;
+    height: 110px;
+    background: #FAF6F1;
+    border: 6px solid #E8D5C0;
+    border-top: none;
+    border-radius: 0 0 70px 70px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    z-index: 2;
+    overflow: hidden;
+}
+body.light-mode .coffee-cup {
+    background: #FAF6F1;
+    border-color: #E8D5C0;
+}
+.cup-handle {
+    position: absolute;
+    right: -30px;
+    top: 25px;
+    width: 40px;
+    height: 60px;
+    border: 6px solid #E8D5C0;
+    border-radius: 0 30px 30px 0;
+    z-index: 1;
+}
+body.light-mode .cup-handle {
+    border-color: #E8D5C0;
+}
+.cup-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.cup-liquid {
+    width: 100%;
+    height: 0%;
+    background: #3e2723; /* Rich dark coffee color */
+    transition: height 2s cubic-bezier(0.4, 0, 0.2, 1), background-color 2s ease;
+}
+.cup-foam {
+    width: 100%;
+    height: 0px;
+    background: #f5ebd6; /* Creamy foam */
+    opacity: 0;
+    transition: opacity 1s ease, height 1s ease;
+    border-radius: 50% 50% 0 0;
+}
+.liquid-stream {
+    position: absolute;
+    top: 0;
+    left: 96px;
+    width: 8px;
+    height: 0;
+    background: #3e2723; /* Stream matches liquid */
+    z-index: 3;
+    opacity: 0;
+    transition: height 0.3s ease, opacity 0.2s ease, background-color 0.5s ease;
+    border-radius: 4px;
+}
+.steam-container {
+    position: absolute;
+    top: 40px;
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.steam-line {
+    width: 4px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    animation: steam 2s infinite linear;
+}
+body.light-mode .steam-line {
+    background: rgba(93, 64, 55, 0.3);
+}
+.steam-2 {
+    animation-delay: 0.5s;
+}
+.steam-3 {
+    animation-delay: 1s;
+}
+@keyframes steam {
+    0% {
+        transform: translateY(0) scaleY(1);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-15px) scaleY(1.2);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-30px) scaleY(0.8);
+        opacity: 0;
+    }
+}
+.simulator-controls {
+    display: flex;
+    gap: 1rem;
+}
+
