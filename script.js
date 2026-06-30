@@ -69,20 +69,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================== SCROLL REVEAL ANIMATION ====================
     const revealItems = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Optional: stop observing after reveal
-                // revealObserver.unobserve(entry.target);
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Hero entry animation
+        gsap.from(".hero-content > *", { 
+            duration: 1.2, 
+            y: 40, 
+            opacity: 0, 
+            stagger: 0.12, 
+            ease: "power4.out" 
+        });
+
+        // Parallax moving coffee beans on scroll
+        const beans = document.querySelectorAll('.bean');
+        if (beans.length > 0) {
+            gsap.to(beans, {
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                },
+                y: (i, target) => {
+                    const speed = parseFloat(target.style.animationDuration) || 10;
+                    return -speed * 20;
+                },
+                rotation: 180,
+                ease: "none"
+            });
+        }
+
+        // Scroll reveals using GSAP
+        revealItems.forEach(item => {
+            const cards = item.querySelectorAll('.feature-card, .recipe-card, .review-card, .guide-card, .gifting-feat-item');
+            if (cards.length > 0) {
+                gsap.from(cards, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    stagger: 0.1,
+                    ease: "power3.out"
+                });
+            } else {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power3.out"
+                });
             }
         });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    } else {
+        // Fallback to IntersectionObserver if GSAP CDN is blocked/failed
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
-    revealItems.forEach(item => revealObserver.observe(item));
+        revealItems.forEach(item => revealObserver.observe(item));
+    }
 
     // ==================== HEADER SCROLL & PROGRESS RING ====================
     const circle = document.querySelector('.progress-ring__circle');
